@@ -21,7 +21,7 @@ class JobListingResource extends Resource
     protected static ?string $model = JobListing::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
-    
+
     public static function form(Schema $schema): Schema
     {
         return JobListingForm::configure($schema);
@@ -35,6 +35,13 @@ class JobListingResource extends Resource
     public static function table(Table $table): Table
     {
         return JobListingsTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\ApplicantsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
