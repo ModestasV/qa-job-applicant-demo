@@ -10,13 +10,18 @@ class JobListing extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 
-        'description', 
+        'title',
+        'description',
         'status_id'
     ];
 
     public function jobStatus()
     {
         return $this->belongsTo(JobStatus::class, 'status_id');
+    }
+
+    public function applicants()
+    {
+        return $this->hasMany(Applicant::class, 'job_id');
     }
 }

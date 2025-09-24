@@ -20,6 +20,8 @@ class JobListingsTable
                 TextColumn::make('title'),
                 TextColumn::make('description'),
                 TextColumn::make('jobStatus.name'),
+                TextColumn::make('applicants_count')
+                    ->counts('applicants'),
                 TextColumn::make('created_at')
                     ->dateTime()
             ])
